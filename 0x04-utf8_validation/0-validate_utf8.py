@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """define validUTF8 function"""
-from typing import List
 
 
-def validUTF8(data: List[int]) -> bool:
+def validUTF8(data):
     """return True if its a validUTF8 or False otherwise"""
     data_len = len(data)
     count = 0
