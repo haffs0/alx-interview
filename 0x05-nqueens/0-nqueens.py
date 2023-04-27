@@ -4,25 +4,20 @@
 import sys
 
 
-N = int(sys.argv[1])
-
-board = [[0]*N for _ in range(N)]
-
-
 def get_input():
     """Retrieves size of board"""
     n = 0
     if len(sys.argv) != 2:
-        print("Usage: nqueen N")
-        sys.exit(1)
+        print("Usage: nqueens N")
+        exit(1)
     try:
         n = int(sys.argv[1])
     except Exception:
         print("N must be a number")
-        sys.exit(1)
+        exit(1)
     if n < 4:
         print("N must be at least 4")
-        sys.exit(1)
+        exit(1)
     return n
 
 
@@ -31,7 +26,13 @@ def n_queens(n, i=0, a=[], b=[], c=[]):
     if i < n:
         for j in range(n):
             if j not in a and i + j not in b and i - j not in c:
-                yield from n_queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
+                yield from n_queens(
+                        n,
+                        i + 1,
+                        a + [j],
+                        b + [i + j],
+                        c + [i - j]
+                        )
     else:
         yield a
 
