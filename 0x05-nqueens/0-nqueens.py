@@ -26,12 +26,12 @@ def get_input():
     return n
 
 
-def n_queen(n, i=0, a=[], b=[], c=[]):
+def n_queens(n, i=0, a=[], b=[], c=[]):
     """ find possible positions """
     if i < n:
         for j in range(n):
             if j not in a and i + j not in b and i - j not in c:
-                yield from n_queen(n, i + 1, a + [j], b + [i + j], c + [i - j])
+                yield from n_queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
     else:
         yield a
 
@@ -40,7 +40,7 @@ def solution(n):
     """ solution for n queens puzzle """
     k = []
     i = 0
-    for solution in n_queen(n, 0):
+    for solution in n_queens(n, 0):
         for s in solution:
             k.append([i, s])
             i += 1
@@ -49,6 +49,5 @@ def solution(n):
         i = 0
 
 
-if __name__ == '__main__':
-    n = get_input()
-    solution(n)
+n = get_input()
+solution(n)
